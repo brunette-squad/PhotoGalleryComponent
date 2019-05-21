@@ -1,5 +1,6 @@
 import Component from './Component.js';
 import Header from './Header.js';
+import ImageList from './ImageList.js';
 
 class App extends Component {
 
@@ -11,6 +12,10 @@ class App extends Component {
 
         const main = dom.querySelector('main');
         dom.insertBefore(headerDOM, main);
+
+        const imageList = new ImageList({  }); //TODO: confirm photos vs images?
+        const imageListDOM = imageList.render();
+        main.appendChild(imageListDOM);
         return dom;
     }
 
