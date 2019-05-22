@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css?family=Amatic+SC&display=swap');
+
+body {
+    background-color: rgb(221, 241, 250);
+    font-family: 'Amatic SC', cursive;
+    font-size: 1.3em;
+}
+
+h1 {
+    text-align: center;
+    color: darkblue;
+}
+
+#photos {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+}
+
+#photos li {
+    list-style: none;
+    display: flex;
+    height: 200px;
+    width: 200px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    border: 2px dotted rgb(58, 109, 196);
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+img {
+    height: 100px;
+    width: 100px; 
+}
