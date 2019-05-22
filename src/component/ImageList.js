@@ -12,10 +12,7 @@ class ImageList extends Component {
             const imageItemDOM = imageItem.render();
             list.appendChild(imageItemDOM);
         });
-
-        
-        // move const images line back to here after forEach
-        
+                
         return list;
     }
     
