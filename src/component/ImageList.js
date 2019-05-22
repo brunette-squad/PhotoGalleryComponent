@@ -1,9 +1,18 @@
 import Component from './Component.js';
+import ImageItem from './ImageItem.js';
 
 class ImageList extends Component {
     render() {
 
         const list = this.renderDOM();
+        const images = this.props.images;
+        
+        images.forEach(image => {
+            const imageItem = new ImageItem({ image });
+            const imageItemDOM = imageItem.render();
+            list.appendChild(imageItemDOM);
+        });
+
         
         // move const images line back to here after forEach
         
@@ -11,11 +20,8 @@ class ImageList extends Component {
     }
     
     renderTemplate() {
-        const images = this.props.images;
         return /*html*/ `
-            <ul id="photos">
-                <li>${images.length}</li>
-            </ul>
+            <ul id="photos"></ul>
         `;
     }
 }
