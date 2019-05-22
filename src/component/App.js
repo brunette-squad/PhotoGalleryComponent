@@ -3,6 +3,7 @@ import Header from './Header.js';
 import ImageList from './ImageList.js';
 import images from '../../data/images.js';
 import AddImage from './AddImage.js';
+import Filter from './Filter.js';
 
 class App extends Component {
 
@@ -24,6 +25,9 @@ class App extends Component {
 
         const addImageDOM = addImage.render();
         main.appendChild(addImageDOM);
+
+        const filter = new Filter();
+        main.appendChild(filter.render());
 
         const imageList = new ImageList({ images });
         const imageListDOM = imageList.render();
