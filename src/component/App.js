@@ -26,7 +26,11 @@ class App extends Component {
         const addImageDOM = addImage.render();
         main.appendChild(addImageDOM);
 
-        const filter = new Filter();
+        const filter = new Filter({
+            onFilter: filter => {
+                //this is where we will put our filterImage function
+            }
+        });
         main.appendChild(filter.render());
 
         const imageList = new ImageList({ images });
