@@ -3,10 +3,12 @@ function filterImages(images, filter) {
     return images.filter(image => {
 
         const lowerCaseTitle = image.title.toLowerCase();
-        const hasTitle = lowerCaseTitle.includes(lowerCaseFilter);
+        // const hasTitle = lowerCaseTitle.includes(lowerCaseFilter);
 
-        const hornNumber = image.horns;
-        const hasHorns = !filter.horns || hornNumber >= filter.horns;
+        // const hornNumber = image.horns;
+        const hasHorns = !filter.horns || image.horns >= filter.horns;
+        const hasTitle = !lowerCaseFilter || lowerCaseTitle.includes(lowerCaseFilter);
+
     
         return hasTitle && hasHorns;
     });
