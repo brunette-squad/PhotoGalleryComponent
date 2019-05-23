@@ -16,9 +16,9 @@ class Filter extends Component {
     renderTemplate() {
         return /*html*/ `
         <section class ="filter-section">
-        <p>Search by title or number of horns...</p>
-            <input class="filter" name="filter">
             <span class="search">👓</span>
+            <input class="filter" name="letter" placeholder="search by title">
+            <input class="filter" name="number" placeholder="search by # of horns">
         </section>
         `;
     }
