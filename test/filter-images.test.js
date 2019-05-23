@@ -6,11 +6,13 @@ QUnit.module('filter images');
 
 function filterImages(images, filter) {
     const lowerCaseTitleFilter = filter.title.toLowerCase();
-
     return images.filter(image => {
         const lowerCaseTitle = image.title.toLowerCase();
         const hasTitle = lowerCaseTitle.includes(lowerCaseTitleFilter);
-        return hasTitle;
+        const hornNumber = image.horns;
+        const hasHorns = !filter.horns || hornNumber >= filter.horns;
+
+        return hasTitle && hasHorns;
     });
 }
 
@@ -43,6 +45,7 @@ test('filter image titles', assert => {
     // arrange
     const filter = {
         title: 'UniWhal',
+        horns: ''
     };
     const filtered = filterImages(images, filter);
     // act
@@ -53,5 +56,23 @@ test('filter image titles', assert => {
         'description': 'A unicorn and a narwhal nuzzling their horns',
         'keyword': 'narwhal',
         'horns': 1 
+    }]);
+});
+
+test('filter image by horn number', assert => {
+    // arrange
+    const filter = {
+        horns: 2,
+        title: ''
+    };
+    const filtered = filterImages(images, filter);
+    // act
+    // assert
+    assert.deepEqual(filtered, [{ 
+        'url': 'https://images.unsplash.com/photo-1512636618879-bbe79107e9e3?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=bd9460ee6d1ddbb6b1ca7be86dfc4590&auto=format&fit=crop&w=1825&q=80',
+        'title': 'Rhino Family',
+        'description': 'Mother (or father) rhino with two babies',
+        'keyword': 'rhino',
+        'horns': 2
     }]);
 });
