@@ -9,7 +9,7 @@ class Filter extends Component {
         const inputs = dom.querySelectorAll('input');
         inputs.forEach(input => {
             input.addEventListener('input', () => {
-                console.log(digits.value);
+                console.log(text.value);
                 this.props.onFilter({
                     text: text.value,
                     digits: digits.value
