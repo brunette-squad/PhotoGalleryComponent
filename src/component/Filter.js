@@ -4,11 +4,18 @@ class Filter extends Component {
 
     render() { 
         const dom = this.renderDOM();
-        const input = dom.querySelector('input');
-        input.addEventListener('input', () => {
-            this.props.onFilter({
-                text: input.value
+        const text = dom.querySelector('#text');
+        const digits = dom.querySelector('#digits');
+        const inputs = dom.querySelectorAll('input');
+        inputs.forEach(input => {
+            input.addEventListener('input', () => {
+                console.log(digits.value);
+                this.props.onFilter({
+                    text: text.value,
+                    digits: digits.value
+                });
             });
+
         });
         return dom;
     }
@@ -17,8 +24,8 @@ class Filter extends Component {
         return /*html*/ `
         <section class ="filter-section">
             <span class="search">👓</span>
-            <input class="filter" name="letter" placeholder="search by title">
-            <input class="filter" name="number" placeholder="search by # of horns">
+            <input id="text" name="letter" placeholder="search by title">
+            <input id="digits" name="number" placeholder="search by # of horns">
         </section>
         `;
     }

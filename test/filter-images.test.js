@@ -14,6 +14,7 @@ function filterImages(images, filter) {
 
         return hasTitle && hasHorns;
     });
+
 }
 
 const images = [
