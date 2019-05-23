@@ -4,6 +4,7 @@ import ImageList from './ImageList.js';
 import images from '../../data/images.js';
 import AddImage from './AddImage.js';
 import Filter from './Filter.js';
+import filterImages from '../filter-images.js';
 
 class App extends Component {
 
@@ -28,7 +29,9 @@ class App extends Component {
 
         const filter = new Filter({
             onFilter: filter => {
-                //this is where we will put our filterImage function
+                const filtered = filterImages(images, filter);
+                console.log(filtered);
+                imageList.update({ images: filtered });
             }
         });
         main.appendChild(filter.render());

@@ -1,30 +1,8 @@
-// import
+import filterImages from '../src/filter-images.js';
 
 const test = QUnit.test;
-const only = QUnit.only;
 
 QUnit.module('filter images');
-
-function filterImages(images, filter) {
-    const lowerCaseFilter = filter.title.toLowerCase();
-    return images.filter(image => {
-        // const lowerCaseFilter = image.filter.toLowerCase();
-        // const hasText = lowerCaseFilter.includes.toLowerCase();
-        
-        const lowerCaseTitle = image.title.toLowerCase();
-        const hasTitle = lowerCaseTitle.includes(lowerCaseFilter);
-
-        // const lowerCaseKeyword = image.keyword.toLowerCase();
-        // const hasKeyword = lowerCaseKeyword.includes(lowerCaseFilter);
-        
-
-        const hornNumber = image.horns;
-        const hasHorns = !filter.horns || hornNumber >= filter.horns;
-    
-        return hasTitle && hasHorns;
-    });
-
-}
 
 const images = [
     {
@@ -50,11 +28,10 @@ const images = [
     }
 ];
 
-
 test('filter image titles', assert => {
     // arrange
     const filter = {
-        title: 'UniWhal',
+        text: 'UniWhal',
         horns: '',
     };
     const filtered = filterImages(images, filter);
@@ -73,7 +50,7 @@ test('filter image by horn number', assert => {
     // arrange
     const filter = {
         horns: 2,
-        title: '',
+        text: '',
     };
     const filtered = filterImages(images, filter);
     // act
@@ -87,11 +64,11 @@ test('filter image by horn number', assert => {
     }]);
 });
 
-test('filter image by keywords', assert => {
+test('filter image by both horn number and title', assert => {
     // arrange
     const filter = {
-        horns: '',
-        title: 'rhino',
+        horns: 2,
+        text: 'rhino',
     };
     const filtered = filterImages(images, filter);
     // act
