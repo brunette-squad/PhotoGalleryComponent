@@ -1,16 +1,20 @@
 function filterImages(images, filter) {
-    const lowerCaseFilter = filter.text.toLowerCase();
+    const text = filter.text.toLowerCase();
     return images.filter(image => {
 
-        const lowerCaseTitle = image.title.toLowerCase();
-        // const hasTitle = lowerCaseTitle.includes(lowerCaseFilter);
+        const title = image.title.toLowerCase();
+        const keyword = image.keyword.toLowerCase();
+        const description = image.description.toLowerCase();
 
-        // const hornNumber = image.horns;
         const hasHorns = !filter.horns || image.horns >= filter.horns;
-        const hasTitle = !lowerCaseFilter || lowerCaseTitle.includes(lowerCaseFilter);
+        const hasText = !text 
+            || title.includes(text) 
+            || keyword.includes(text)
+            || description.includes(text);
+        
 
     
-        return hasTitle && hasHorns;
+        return hasText && hasHorns;
     });
 
 }
